@@ -24,6 +24,11 @@ namespace Windows.Storage
 
 			var path = Uri.UnescapeDataString(uri.PathAndQuery);
 
+			if(uri.Host is { Length: > 0 } host)
+			{
+				path = host + "/" + path;
+			}
+
 			return await StorageFile.GetFileFromPathAsync(await AssetsManager.DownloadAsset(ct, path));
 		}
 	}
