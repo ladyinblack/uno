@@ -6,7 +6,7 @@
 	<Target Name="_DefineUnoPriProperties">
 		<!-- Generate Library Layout when generating NuGet packages -->
 		<PropertyGroup Condition="'$(UnoSkipLibraryLayout)' != 'true'">
-			<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_UnoSdkIncludeWindowsLibraryLayoutItems</TargetsForTfmSpecificContentInPackage>
+			<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_UnoIncludeLibraryAssets</TargetsForTfmSpecificContentInPackage>
 		
 			<UnoPriInitialPath>$(AssemblyName.ToLowerInvariant())</UnoPriInitialPath>
 			<ProjectUnoPriFileName Condition="'$(ProjectUnoPriFileName)' == '' and '$(UnoPriInitialPath)' != ''">$(UnoPriInitialPath).upri.marker</ProjectUnoPriFileName>

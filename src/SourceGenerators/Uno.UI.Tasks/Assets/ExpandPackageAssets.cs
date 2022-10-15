@@ -1,5 +1,6 @@
 ﻿#nullable enable
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Build.Framework;
@@ -17,6 +18,7 @@ namespace Uno.UI.Tasks.Assets
 
 		[Output]
 		public ITaskItem[]? Assets { get; set; }
+			= Array.Empty<ITaskItem>();
 
 		public override bool Execute()
 		{
