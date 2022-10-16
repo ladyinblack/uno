@@ -62,8 +62,11 @@
 			Condition="'$(GenerateLibraryLayout)' == 'true' AND '$(SDKIdentifier)' != 'Windows'"
 			DependsOnTargets="_DefineUnoPriProperties">
 		<ItemGroup>
-			<TfmSpecificPackageFile Include="@(ContentWithTargetPath)" PackagePath="lib\$(TargetFramework)\$(UnoPriInitialPath)\%(TargetPath)" />
-			<TfmSpecificPackageFile Include="$(ProjectUnoPriFullPath)" PackagePath="lib\$(TargetFramework)\$(ProjectUnoPriFileName)" />
+			<TfmSpecificPackageFile Include="@(ContentWithTargetPath)"
+									PackagePath="lib\$(TargetFramework)\$(UnoPriInitialPath)\%(TargetPath)" />
+			<TfmSpecificPackageFile Condition="'@(ContentWithTargetPath)'!=''"
+									Include="$(ProjectUnoPriFullPath)"
+									PackagePath="lib\$(TargetFramework)\$(ProjectUnoPriFileName)" />
 		</ItemGroup>
 	</Target>
 	
