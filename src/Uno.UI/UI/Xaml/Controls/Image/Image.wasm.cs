@@ -9,13 +9,10 @@ using Windows.UI.Xaml.Media.Imaging;
 using Uno.Disposables;
 using Windows.Storage.Streams;
 using System.Runtime.InteropServices;
-
 using Windows.UI;
 
 namespace Windows.UI.Xaml.Controls
 {
-
-
 	partial class Image : FrameworkElement
 	{
 		private readonly SerialDisposable _sourceDisposable = new SerialDisposable();
