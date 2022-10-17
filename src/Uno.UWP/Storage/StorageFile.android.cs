@@ -33,6 +33,11 @@ namespace Windows.Storage
 
 			var path = AndroidResourceNameEncoder.EncodeResourcePath(Uri.UnescapeDataString(uri.PathAndQuery).TrimStart(new char[] { '/' }));
 
+			if (uri.Host is { Length: > 0 } host)
+			{
+				path = host + "/" + path.TrimStart('/');
+			}
+
 			// Read the contents of our asset
 			var outputCachePath = global::System.IO.Path.Combine(Android.App.Application.Context.CacheDir.AbsolutePath, path);
 

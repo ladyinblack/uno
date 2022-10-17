@@ -26,7 +26,7 @@ namespace Windows.Storage
 
 			if(uri.Host is { Length: > 0 } host)
 			{
-				path = host + "/" + path;
+				path = host + "/" + path.TrimStart("/");
 			}
 
 			return await StorageFile.GetFileFromPathAsync(await AssetsManager.DownloadAsset(ct, path));
