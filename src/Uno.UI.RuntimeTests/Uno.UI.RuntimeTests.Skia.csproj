@@ -97,13 +97,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Assets\TransientAsset01.txt" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="Assets\TransientAsset01.txt">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </Content>
+	  <Content Include="Assets\TransientAsset01.txt"/>
 	</ItemGroup>
 
 	<Target Name="ValidateLocalAssets"

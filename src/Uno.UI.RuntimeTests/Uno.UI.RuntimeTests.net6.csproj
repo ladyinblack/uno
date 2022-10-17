@@ -64,6 +64,8 @@
 		<Page Remove="@(Page)" />
 		<Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
 		<UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
+		
+		<Content Include="Assets\TransientAsset01.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
