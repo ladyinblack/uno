@@ -50,7 +50,7 @@
 		</Compile>
 	</ItemGroup>
 
-	<Import Project="UnitTestsImport.props"/>
+	<Import Project="UnitTestsImport.props" />
 
 	<ItemGroup>
 		<EmbeddedResource Include="Assets\Border_Snapshot.bgra8" />
@@ -106,5 +106,9 @@
 		<Page Include="$(PlatformItemsBasePath)**/*.xaml" Exclude="$(PlatformItemsBasePath)bin/**/*.xaml;$(PlatformItemsBasePath)obj/**/*.xaml" />
 
 		<UpToDateCheckInput Include="$(PlatformItemsBasePath)**\*.xaml" Exclude="$(PlatformItemsBasePath)bin\**\*.xaml;$(PlatformItemsBasePath)obj\**\*.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Assets\TransientAsset01.txt" />
 	</ItemGroup>
 </Project>

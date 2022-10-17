@@ -122,4 +122,15 @@
 		</ItemGroup>
 	</Target>
 
+	<!-- Adjust support for build output -->
+	<Target Name="_UnoWasmContentAdjust"
+			Condition="'$(WasnShellSupportsBuildOutputGroups)'!='true'"
+			BeforeTargets="BuildDist">
+		<ItemGroup>
+			<Content Include="@(_SourceItemsToCopyToOutputDirectory)"
+					 Condition="'%(_SourceItemsToCopyToOutputDirectory.TargetPath)'!=''"
+					 Link="%(_SourceItemsToCopyToOutputDirectory.TargetPath)" />
+		</ItemGroup>
+	</Target>
+
 </Project>
