@@ -55,8 +55,11 @@
 
 	<Target Name="UnoAssetsGeneration"
 				BeforeTargets="_GetLibraryImports;PrepareForBuild;_CheckForContent;_CollectBundleResources"
-				DependsOnTargets="ResolveProjectReferences"
-				Condition="'$(DesignTimeBuild)' != 'true' and '$(BuildingInsideUnoSourceGenerator)' == '' and ('$(XamarinProjectType)'!='' or '$(UnoForceProcessPRIResource)'!='')">
+				DependsOnTargets="ResolveProjectReferences;GetCopyToOutputDirectoryItems"
+				Condition="
+				'$(DesignTimeBuild)' != 'true'
+				and '$(BuildingInsideUnoSourceGenerator)' == ''
+				and ('$(XamarinProjectType)'!='' or '$(UnoForceProcessPRIResource)'!='')">
 		<!-- Assets -->
 		<PropertyGroup>
 			<UseHighDPIResources Condition="'$(UseHighDPIResources)'==''">True</UseHighDPIResources>
@@ -64,7 +67,7 @@
 		<RetargetAssets_v0 UseHighDPIResources="$(UseHighDPIResources)"
 							TargetPlatform="$(XamarinProjectType)"
 							DefaultLanguage="$(DefaultLanguage)"
-							ContentItems="@(Content)"
+							ContentItems="@(Content);@(_SourceItemsToCopyToOutputDirectory)"
 							AndroidAssetsPrefix="$(MonoAndroidAssetsPrefix)"
 							Condition="'$(XamarinProjectType)'!=''">
 			<Output TaskParameter="Assets"

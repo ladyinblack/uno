@@ -75,15 +75,18 @@ namespace Uno.UI.Tasks.Assets
 		{
 			if (
 				!asset.MetadataNames.OfType<string>().Contains("Link")
+				&& !asset.MetadataNames.OfType<string>().Contains("TargetPath")
 				&& !asset.MetadataNames.OfType<string>().Contains("DefiningProjectDirectory")
 			)
 			{
-				Log.LogMessage($"Skipping '{asset.ItemSpec}' because 'Link' or 'DefiningProjectDirectory' metadata is not set.");
+				Log.LogMessage($"Skipping '{asset.ItemSpec}' because 'Link', 'TargetPath' or 'DefiningProjectDirectory' metadata is not set.");
 				return null;
 			}
 
 			var fullPath = asset.GetMetadata("FullPath");
-			var relativePath = asset.GetMetadata("Link");
+			var relativePath = asset.GetMetadata("Link") is { Length: > 0 } link
+				? link
+				: asset.GetMetadata("TargetPath");
 
 			if (string.IsNullOrEmpty(relativePath))
 			{
