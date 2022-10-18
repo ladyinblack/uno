@@ -124,7 +124,7 @@
 
 	<!-- Adjust support for build output -->
 	<Target Name="_UnoWasmContentAdjust"
-			Condition="'$(WasnShellSupportsBuildOutputGroups)'!='true'"
+			Condition="'$(WasmShellSupportsBuildOutputGroups)'!='true'"
 			BeforeTargets="BuildDist">
 		<ItemGroup>
 			<Content Include="@(_SourceItemsToCopyToOutputDirectory)"
