@@ -2,7 +2,7 @@
 
 using System.Numerics;
 
-namespace Windows.UI.Composition
+namespace Microsoft.UI.Composition
 {
 	[global::Uno.NotImplemented]
 	public partial class RectangleClip : CompositionClip

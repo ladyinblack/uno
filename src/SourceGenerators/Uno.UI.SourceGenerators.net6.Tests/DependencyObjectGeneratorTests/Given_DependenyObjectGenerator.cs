@@ -1,4 +1,4 @@
-﻿using Microsoft.CodeAnalysis.Testing;
+using Microsoft.CodeAnalysis.Testing;
 using Microsoft.CodeAnalysis.CSharp.Testing;
 using Uno.UI.SourceGenerators.DependencyObject;
 using Microsoft.CodeAnalysis.Testing.Verifiers;
@@ -35,7 +35,7 @@ public class Given_DependenyObjectGenerator
 		await TestAndroid(@"
 using Android.Content;
 using Windows.UI.Core;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 
 public class C : Android.Views.View, DependencyObject
 {
@@ -61,7 +61,7 @@ public class C : Android.Views.View, DependencyObject
 	{
 		var test = """
 			using Windows.UI.Core;
-			using Windows.UI.Xaml;
+			using Microsoft.UI.Xaml;
 
 			internal partial class OuterClass
 			{
@@ -96,15 +96,15 @@ public class C : Android.Views.View, DependencyObject
 	 using Uno.UI;
 	 using Uno.UI.Controls;
 	 using Uno.UI.DataBinding;
-	 using Windows.UI.Xaml;
-	 using Windows.UI.Xaml.Data;
+	 using Microsoft.UI.Xaml;
+	 using Microsoft.UI.Xaml.Data;
 	 using Uno.Diagnostics.Eventing;
 	 #if __MACOS__
 	 using AppKit;
 	 #endif
 	 partial class OuterClass
 	 {
-	 	[global::Windows.UI.Xaml.Data.Bindable]
+	 	[global::Microsoft.UI.Xaml.Data.Bindable]
 	 	partial class Inner : IDependencyObjectStoreProvider, IWeakReferenceProvider
 	 	{
 	 		private DependencyObjectStore __storeBackingField;
@@ -256,17 +256,17 @@ public class C : Android.Views.View, DependencyObject
 	 		
 	 		#endregion
 	 		
-	 		public void SetBinding(object target, string dependencyProperty, global::Windows.UI.Xaml.Data.BindingBase binding)
+	 		public void SetBinding(object target, string dependencyProperty, global::Microsoft.UI.Xaml.Data.BindingBase binding)
 	 		{
 	 			__Store.SetBinding(target, dependencyProperty, binding);
 	 		}
 	 		
-	 		public void SetBinding(string dependencyProperty, global::Windows.UI.Xaml.Data.BindingBase binding)
+	 		public void SetBinding(string dependencyProperty, global::Microsoft.UI.Xaml.Data.BindingBase binding)
 	 		{
 	 			__Store.SetBinding(dependencyProperty, binding);
 	 		}
 	 		
-	 		public void SetBinding(DependencyProperty dependencyProperty, global::Windows.UI.Xaml.Data.BindingBase binding)
+	 		public void SetBinding(DependencyProperty dependencyProperty, global::Microsoft.UI.Xaml.Data.BindingBase binding)
 	 		{
 	 			__Store.SetBinding(dependencyProperty, binding);
 	 		}
@@ -283,7 +283,7 @@ public class C : Android.Views.View, DependencyObject
 	 		
 	 		partial void OnTemplatedParentChangedPartial(DependencyPropertyChangedEventArgs e);
 	 		
-	 		public global::Windows.UI.Xaml.Data.BindingExpression GetBindingExpression(DependencyProperty dependencyProperty)
+	 		public global::Microsoft.UI.Xaml.Data.BindingExpression GetBindingExpression(DependencyProperty dependencyProperty)
 	 			=>  __Store.GetBindingExpression(dependencyProperty);
 	 		
 	 		public void ResumeBindings() 

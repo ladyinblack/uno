@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 using Uno.UI.Xaml;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 
 namespace Uno.UI
 {
@@ -12,7 +12,7 @@ namespace Uno.UI
 	{
 		public static void ClearCache(Type[] types)
 		{
-			Windows.UI.Xaml.DependencyProperty.ClearRegistry();
+			Microsoft.UI.Xaml.DependencyProperty.ClearRegistry();
 			DataBinding.BindingPropertyHelper.ClearCaches();
 		}
 

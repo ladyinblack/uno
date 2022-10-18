@@ -1,4 +1,4 @@
-﻿#nullable enable
+#nullable enable
 
 using System;
 using System.Collections.Generic;
@@ -14,11 +14,11 @@ namespace Uno.APISurfaceValidator
 		private static (string path, string targetAssembly, string pattern)[] _contractsToValidate = new[]
 		{
 			(@"C:\Program Files (x86)\Windows Kits\10\References\10.0.19041.0\Windows.Foundation.FoundationContract\4.0.0.0\Windows.Foundation.FoundationContract.winmd", "Uno.Foundation.dll", "*"),
-			(@"C:\Program Files (x86)\Windows Kits\10\References\10.0.19041.0\Windows.Foundation.UniversalApiContract\10.0.0.0\Windows.Foundation.UniversalApiContract.winmd", "Uno.dll", "-Windows.UI.Xaml"),
+			(@"C:\Program Files (x86)\Windows Kits\10\References\10.0.19041.0\Windows.Foundation.UniversalApiContract\10.0.0.0\Windows.Foundation.UniversalApiContract.winmd", "Uno.dll", "-Microsoft.UI.Xaml"),
 			(@"C:\Program Files (x86)\Windows Kits\10\References\10.0.19041.0\Windows.Phone.PhoneContract\1.0.0.0\Windows.Phone.PhoneContract.winmd", "Uno.dll", "*"),
 			(@"C:\Program Files (x86)\Windows Kits\10\References\10.0.19041.0\Windows.Networking.Connectivity.WwanContract\2.0.0.0\Windows.Networking.Connectivity.WwanContract.winmd", "Uno.dll", "*"),
 			(@"C:\Program Files (x86)\Windows Kits\10\References\10.0.19041.0\Windows.ApplicationModel.Calls.CallsPhoneContract\5.0.0.0\Windows.ApplicationModel.Calls.CallsPhoneContract.winmd", "Uno.dll", "*"),
-			(@"C:\Program Files (x86)\Windows Kits\10\References\10.0.19041.0\Windows.Foundation.UniversalApiContract\10.0.0.0\Windows.Foundation.UniversalApiContract.winmd", "Uno.UI.dll", "+Windows.UI.Xaml")
+			(@"C:\Program Files (x86)\Windows Kits\10\References\10.0.19041.0\Windows.Foundation.UniversalApiContract\10.0.0.0\Windows.Foundation.UniversalApiContract.winmd", "Uno.UI.dll", "+Microsoft.UI.Xaml")
 		};
 
 		static int Main(string[] args)
@@ -146,7 +146,7 @@ namespace Uno.APISurfaceValidator
 		{
 			if (member is MethodDefinition methodDefinition)
 			{
-				if (methodDefinition.DeclaringType.FullName == "Windows.UI.Xaml.Controls.WebView")
+				if (methodDefinition.DeclaringType.FullName == "Microsoft.UI.Xaml.Controls.WebView")
 				{
 					switch (methodDefinition.Name)
 					{
@@ -168,7 +168,7 @@ namespace Uno.APISurfaceValidator
 			}
 			else if (member is PropertyDefinition propertyDefinition)
 			{
-				if (propertyDefinition.DeclaringType.FullName == "Windows.UI.Xaml.Controls.WebView")
+				if (propertyDefinition.DeclaringType.FullName == "Microsoft.UI.Xaml.Controls.WebView")
 				{
 					switch (propertyDefinition.Name)
 					{
