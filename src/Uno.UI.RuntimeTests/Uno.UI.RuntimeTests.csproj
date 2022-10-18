@@ -51,6 +51,8 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Assets\Border_Snapshot.bgra8" />
+		
+		<Content Include="Assets\TransientAsset01.txt" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0' or '$(TargetFramework)'=='net7.0'">
@@ -84,8 +86,6 @@
 
 		<!-- We remove Unit tests imported from MUX on UAP as they are usualy heavily relying on internal classes.-->
 		<Compile Remove="$(MSBuildThisFileDirectory)MUX\Microsoft_UI_XAML_Controls\**\*.cs" />
-		
-		<Content Include="Assets\TransientAsset01.txt" />
 	</ItemGroup>
 	<PropertyGroup Condition="'$(TargetFramework)'=='uap10.0.18362'">
 		<!--SkipMicrosoftUIXamlCheckTargetPlatformVersion is required for Microsoft.UI.Xaml as we only validate compilation on UAP-->
@@ -122,7 +122,15 @@
 	</ItemGroup>
 	
 	<ItemGroup>
+	  <None Remove="Assets\TransientAsset01.txt" />
+	</ItemGroup>
+	
+	<ItemGroup>
 		<Compile Include="Tests\Windows_UI_Xaml_Controls\HtmlElementAttributeTests\Given_HtmlElementAttribute.Wasm.cs" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Content Include="Assets\TransientAsset01.txt" />
 	</ItemGroup>
 
 	<Import Project="..\SourceGenerators\Uno.UI.SourceGenerators\Content\Uno.UI.SourceGenerators.props" />

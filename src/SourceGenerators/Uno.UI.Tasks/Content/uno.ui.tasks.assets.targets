@@ -67,7 +67,7 @@
 	Populate output groups when building heads
 	-->
 	<Target Name="_UnoAddLibraryAssets"
-			Condition="'$(IsUnoHead)'=='true'"
+			Condition="'$(IsUnoHead)'=='true' or '$(AndroidApplication)'=='true' or '$(OutputType)'=='exe'"
 			BeforeTargets="GetCopyToOutputDirectoryItems">
 
 		<ExpandPackageAssets_v0 MarkerFiles="@(_UnoPriFiles)">
@@ -86,7 +86,7 @@
 	Determines the marker location for project references
 	-->
 	<Target Name="_UnoFindPackageAssetMarkers" 
-			Condition="'$(IsUnoHead)'=='true'"
+			Condition="'$(IsUnoHead)'=='true' or '$(AndroidApplication)'=='true' or '$(OutputType)'=='exe'"
 			AfterTargets="ResolveAssemblyReferences">
 		<ItemGroup>
 			<_UnoPriFiles Include="@(ReferenceCopyLocalPaths->'%(RootDir)%(Directory)%(Filename).upri.marker')"
@@ -107,9 +107,15 @@
 		</_UnoAddAssetsFilesToCopyLocalDependsOn>
 	</PropertyGroup>
 
+	<!--
+	Target executed by every project onto its references to determine copy local assets.
+	Since this target renames assets to include the project name, it must not be executed
+	on the project head. On iOS, it can cause the creation of an invalid app-named
+	folder, breaking the build.
+	-->
 	<Target Name="_UnoAddAssetsFilesToCopyLocal"
 			DependsOnTargets="$(_UnoAddAssetsFilesToCopyLocalDependsOn)"
-			Condition="'$(IsUnoHead)'!='true'"
+			Condition="'$(IsUnoHead)'!='true' and '$(AndroidApplication)'=='' and '$(OutputType)'!='exe'"
 			BeforeTargets="GetCopyToOutputDirectoryItems">
 
 		<ItemGroup>
@@ -122,7 +128,10 @@
 		</ItemGroup>
 	</Target>
 
-	<!-- Adjust support for build output -->
+	<!--
+	Adjust support for build output for Uno.Wasm.Bootstrap, because earlier
+	versions (3.x) don't support TargetPath metadata.
+	-->
 	<Target Name="_UnoWasmContentAdjust"
 			Condition="'$(WasmShellSupportsBuildOutputGroups)'!='true'"
 			BeforeTargets="BuildDist">
