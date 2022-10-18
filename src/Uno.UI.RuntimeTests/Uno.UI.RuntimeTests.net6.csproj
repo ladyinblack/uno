@@ -48,7 +48,7 @@
 		</Compile>
 	</ItemGroup>
 
-	<Import Project="UnitTestsImport.props"/>
+	<Import Project="UnitTestsImport.props" />
 
 	<ItemGroup>
 		<ProjectReference Include="..\Uno.Foundation\Uno.Foundation.net6.csproj" />
