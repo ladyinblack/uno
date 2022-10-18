@@ -352,7 +352,7 @@ namespace Uno.UI.RuntimeTests.Tests
 			}
 			catch (Exception ex)
 			{
-				Assert.Fail("URI was not decoded " + ex.Message);
+				Assert.Fail("Transitive asset could not be found " + ex.Message);
 			}
 		}
 
