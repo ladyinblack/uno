@@ -54,7 +54,7 @@
 	</Target>
 
 	<Target Name="UnoAssetsGeneration"
-				BeforeTargets="_GetLibraryImports;PrepareForBuild;_CheckForContent;_CollectBundleResources"
+				BeforeTargets="_GetLibraryImports;_CheckForContent;_CollectBundleResources"
 				DependsOnTargets="ResolveProjectReferences;GetCopyToOutputDirectoryItems"
 				Condition="
 				'$(DesignTimeBuild)' != 'true'
