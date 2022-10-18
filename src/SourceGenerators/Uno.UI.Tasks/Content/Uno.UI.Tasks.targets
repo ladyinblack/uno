@@ -59,7 +59,7 @@
 				Condition="
 				'$(DesignTimeBuild)' != 'true'
 				and '$(BuildingInsideUnoSourceGenerator)' == ''
-				and ('$(XamarinProjectType)'!='' or '$(UnoForceProcessPRIResource)'!='')">
+				and ('$(XamarinProjectType)'!='' or ''=='$(IsUnHead)!=""')">
 		<!-- Assets -->
 		<PropertyGroup>
 			<UseHighDPIResources Condition="'$(UseHighDPIResources)'==''">True</UseHighDPIResources>
