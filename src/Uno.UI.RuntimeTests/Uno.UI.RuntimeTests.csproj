@@ -122,15 +122,7 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-	  <None Remove="Assets\TransientAsset01.txt" />
-	</ItemGroup>
-	
-	<ItemGroup>
 		<Compile Include="Tests\Windows_UI_Xaml_Controls\HtmlElementAttributeTests\Given_HtmlElementAttribute.Wasm.cs" />
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <Content Include="Assets\TransientAsset01.txt" />
 	</ItemGroup>
 
 	<Import Project="..\SourceGenerators\Uno.UI.SourceGenerators\Content\Uno.UI.SourceGenerators.props" />
